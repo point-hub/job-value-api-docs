@@ -1,0 +1,438 @@
+import { CodeGroup, Row, Col, Properties, Property } from "../components/mdx.jsx"
+
+export const description =
+  'On this page, we’ll dive into the different job value metric endpoints you can use to manage job value metrics programmatically.'
+
+# Job Value Metrics
+
+Job Value Metrics is the master data to store the name of the area or city and the minimum wage per year.
+
+## List job value metrics {{ tag: 'GET', label: '/v1/job-value-metrics' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to retrieve a paginated list of all your job value metrics.
+
+    # Request
+
+    ### Optional query
+
+    <Properties>
+      <Property name="page" type="integer">
+        The page number of job value metrics returned.
+        - Default `1`
+      </Property>
+      <Property name="page_size" type="integer">
+        The page size number of job value metrics returned.
+        - Default `10`
+      </Property>
+    </Properties>
+
+    # Response
+
+    <Properties>
+      <Property name="data" type="array<object>">
+        Array of job value metric object
+      </Property>
+      <Property name="data._id" type="string">
+        Unique identifier for the job value metric.
+      </Property>
+      <Property name="data.name" type="string">
+        The name for the job value metric.
+      </Property>
+      <Property name="data.category" type="string">
+        The category for the job value metric.
+      </Property>
+      <Property name="data.scale_1_description" type="string">
+        The scale 1 description for the job value metric.
+      </Property>
+      <Property name="data.scale_1_score" type="string">
+        The scale 1 score for the job value metric.
+      </Property>
+      <Property name="data.scale_2_description" type="string">
+        The scale 2 description for the job value metric.
+      </Property>
+      <Property name="data.scale_2_score" type="string">
+        The scale 2 score for the job value metric.
+      </Property>
+      <Property name="data.scale_3_description" type="string">
+        The scale 3 description for the job value metric.
+      </Property>
+      <Property name="data.scale_3_score" type="string">
+        The scale 3 score for the job value metric.
+      </Property>
+      <Property name="data.scale_4_description" type="string">
+        The scale 4 description for the job value metric.
+      </Property>
+      <Property name="data.scale_4_score" type="string">
+        The scale 4 score for the job value metric.
+      </Property>
+      <Property name="data.scale_5_description" type="string">
+        The scale 5 description for the job value metric.
+      </Property>
+      <Property name="data.scale_5_score" type="string">
+        The scale 5 score for the job value metric.
+      </Property>
+      <Property name="data.created_at" type="datetime">
+        Datetime of when the job value metric was created.
+      </Property>
+      <Property name="data.created_by" type="string">
+        User identifier who create the job value metric.
+      </Property>
+      <Property name="data.updated_at" type="datetime">
+        Datetime of when the job value metric was updated.
+      </Property>
+      <Property name="data.updated_by" type="string">
+        User identifier who update the job value metric.
+      </Property>
+      <Property name="pagination" type="object">
+        Object of Pagination
+      </Property>
+      <Property name="pagination.page" type="number">
+        Page number.
+      </Property>
+      <Property name="pagination.page_size" type="number">
+        Number of total document per page.
+      </Property>
+      <Property name="pagination.page_count" type="number">
+        Total page count.
+      </Property>
+      <Property name="pagination.total_document" type="number">
+        Total filtered document.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="GET" label="/v1/job-value-metrics">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.get('/v1/job-value-metrics', {
+      params: {
+        page:1,
+        page_size: 10
+      }
+    })
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "data": [
+        {
+          "_id": "637b569149e0c02e1036c35a",
+          "category": "Metric Category",
+          "name": "Metric Name",
+          "scale_1_description": "Scale 1",
+          "scale_1_score": "2.1",
+          "scale_2_description": "Scale 2",
+          "scale_2_score": "3.4",
+          "scale_3_description": "Scale 3",
+          "scale_3_score": "5.5",
+          "scale_4_description": "Scale 4",
+          "scale_4_score": "7.24",
+          "scale_5_description": "Scale 5",
+          "scale_5_score": "9.21",
+          "created_by": "637d83d15d2be122007524bf",
+          "created_at": "2022-01-01T00:00:00.000Z",
+        },
+      ],
+      "pagination": {
+        "page": 1,
+        "page_size": 1,
+        "page_count": 1,
+        "total_document": 2
+      }
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
+---
+
+## Create job value metric {{ tag: 'POST', label: '/v1/job-value-metrics' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to add a new job value metric.
+
+    # Request
+
+    ### Required attributes
+
+    <Properties>
+      <Property name="data.name" type="string">
+        The name for the job value metric.
+      </Property>
+      <Property name="data.category" type="string">
+        The category for the job value metric.
+      </Property>
+      <Property name="data.scale_1_description" type="string">
+        The scale 1 description for the job value metric.
+      </Property>
+      <Property name="data.scale_1_score" type="string">
+        The scale 1 score for the job value metric.
+      </Property>
+      <Property name="data.scale_2_description" type="string">
+        The scale 2 description for the job value metric.
+      </Property>
+      <Property name="data.scale_2_score" type="string">
+        The scale 2 score for the job value metric.
+      </Property>
+      <Property name="data.scale_3_description" type="string">
+        The scale 3 description for the job value metric.
+      </Property>
+      <Property name="data.scale_3_score" type="string">
+        The scale 3 score for the job value metric.
+      </Property>
+      <Property name="data.scale_4_description" type="string">
+        The scale 4 description for the job value metric.
+      </Property>
+      <Property name="data.scale_4_score" type="string">
+        The scale 4 score for the job value metric.
+      </Property>
+      <Property name="data.scale_5_description" type="string">
+        The scale 5 description for the job value metric.
+      </Property>
+      <Property name="data.scale_5_score" type="string">
+        The scale 5 score for the job value metric.
+      </Property>
+    </Properties>
+
+    # Response
+
+    <Properties>
+      <Property name="_id" type="string">
+        Unique identifier for the job value metric.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="POST" label="/v1/job-value-metrics">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.post('/v1/job-value-metrics', {
+      category: "Metric Category",
+      name: "Metric Name",
+      scale_1_description: "Scale 1",
+      scale_1_score: "2.1",
+      scale_2_description: "Scale 2",
+      scale_2_score: "3.4",
+      scale_3_description: "Scale 3",
+      scale_3_score: "5.5",
+      scale_4_description: "Scale 4",
+      scale_4_score: "7.24",
+      scale_5_description: "Scale 5",
+      scale_5_score: "9.21",
+    })
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '201' }}
+    {
+      "inserted_id": "637d83d15d2be122007524bf"
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
+---
+
+## Retrieve job value metric {{ tag: 'GET', label: '/v1/job-value-metrics/:id' }}
+
+<Row>
+  <Col>
+    This endpoint allows you to retrieve a job value metric by providing their id.
+
+    # Response
+
+    <Properties>
+      <Property name="_id" type="string">
+        Unique identifier for the job value metric.
+      </Property>
+      <Property name="data.name" type="string">
+        The name for the job value metric.
+      </Property>
+      <Property name="data.category" type="string">
+        The category for the job value metric.
+      </Property>
+      <Property name="data.scale_1_description" type="string">
+        The scale 1 description for the job value metric.
+      </Property>
+      <Property name="data.scale_1_score" type="string">
+        The scale 1 score for the job value metric.
+      </Property>
+      <Property name="data.scale_2_description" type="string">
+        The scale 2 description for the job value metric.
+      </Property>
+      <Property name="data.scale_2_score" type="string">
+        The scale 2 score for the job value metric.
+      </Property>
+      <Property name="data.scale_3_description" type="string">
+        The scale 3 description for the job value metric.
+      </Property>
+      <Property name="data.scale_3_score" type="string">
+        The scale 3 score for the job value metric.
+      </Property>
+      <Property name="data.scale_4_description" type="string">
+        The scale 4 description for the job value metric.
+      </Property>
+      <Property name="data.scale_4_score" type="string">
+        The scale 4 score for the job value metric.
+      </Property>
+      <Property name="data.scale_5_description" type="string">
+        The scale 5 description for the job value metric.
+      </Property>
+      <Property name="data.scale_5_score" type="string">
+        The scale 5 score for the job value metric.
+      </Property>
+        <Property name="created_at" type="datetime">
+        Datetime of when the job value metric was created.
+      </Property>
+      <Property name="created_by" type="string">
+        User identifier who create the job value metric.
+      </Property>
+      <Property name="updated_at" type="datetime">
+        Datetime of when the job value metric was updated.
+      </Property>
+      <Property name="updated_by" type="string">
+        User identifier who update the job value metric.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="GET" label="/v1/job-value-metrics/:id">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.get('/v1/job-value-metrics/637d83d15d2be122007524bf')
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "_id": "637d83d15d2be122007524bf",
+      "category": "Metric Category",
+      "name": "Metric Name",
+      "scale_1_description": "Scale 1",
+      "scale_1_score": "2.1",
+      "scale_2_description": "Scale 2",
+      "scale_2_score": "3.4",
+      "scale_3_description": "Scale 3",
+      "scale_3_score": "5.5",
+      "scale_4_description": "Scale 4",
+      "scale_4_score": "7.24",
+      "scale_5_description": "Scale 5",
+      "scale_5_score": "9.21",
+      "created_by": "637d83d15d2be122007524bf",
+      "created_at": "2022-01-01T00:00:00.000Z",
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
+---
+
+## Update job value metric {{ tag: 'PATCH', label: '/v1/job-value-metrics/:id' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to perform an update on a job value metric.
+
+    # Request
+    
+    ### Required attributes
+
+    <Properties>
+      <Property name="data.name" type="string">
+        The name for the job value metric.
+      </Property>
+      <Property name="data.category" type="string">
+        The category for the job value metric.
+      </Property>
+      <Property name="data.scale_1_description" type="string">
+        The scale 1 description for the job value metric.
+      </Property>
+      <Property name="data.scale_1_score" type="string">
+        The scale 1 score for the job value metric.
+      </Property>
+      <Property name="data.scale_2_description" type="string">
+        The scale 2 description for the job value metric.
+      </Property>
+      <Property name="data.scale_2_score" type="string">
+        The scale 2 score for the job value metric.
+      </Property>
+      <Property name="data.scale_3_description" type="string">
+        The scale 3 description for the job value metric.
+      </Property>
+      <Property name="data.scale_3_score" type="string">
+        The scale 3 score for the job value metric.
+      </Property>
+      <Property name="data.scale_4_description" type="string">
+        The scale 4 description for the job value metric.
+      </Property>
+      <Property name="data.scale_4_score" type="string">
+        The scale 4 score for the job value metric.
+      </Property>
+      <Property name="data.scale_5_description" type="string">
+        The scale 5 description for the job value metric.
+      </Property>
+      <Property name="data.scale_5_score" type="string">
+        The scale 5 score for the job value metric.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="PATCH" label="/v1/job-value-metrics/:id">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.patch('/v1/job-value-metrics/637d83d15d2be122007524bf', {
+      category: "Metric Category",
+      name: "Metric Name",
+      scale_1_description: "Scale 1",
+      scale_1_score: "2.1",
+      scale_2_description: "Scale 2",
+      scale_2_score: "3.4",
+      scale_3_description: "Scale 3",
+      scale_3_score: "5.5",
+      scale_4_description: "Scale 4",
+      scale_4_score: "7.24",
+      scale_5_description: "Scale 5",
+      scale_5_score: "9.21",
+    })
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "matched_count": 1,
+      "modified_count": 1
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
+---
+
+## Delete job value metric {{ tag: 'DELETE', label: '/v1/job-value-metrics/:id' }}
+
+<Row>
+  <Col>
+    This endpoint allows you to delete job value metrics from your job value metric list.
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="DELETE" label="/v1/job-value-metrics/:id">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.delete('/v1/job-value-metrics/637d83d15d2be122007524bf')
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "deleted_count": 1
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>

@@ -1,0 +1,87 @@
+import { CodeGroup, Row, Col, Properties, Property } from "../components/mdx.jsx"
+
+export const description =
+  'On this page, we’ll dive into the different setting endpoints you can use to manage settings programmatically.'
+
+# Settings
+
+Settings is the master data to store the configuration value to calculate job value.
+
+## List settings {{ tag: 'GET', label: '/v1/settings' }}
+
+<Row>
+  <Col>
+    This endpoint allows you to retrieve a setting.
+
+    # Response
+
+    <Properties>
+      <Property name="min_kpi" type="number">
+        The minimum kpi for the job calculation.
+      </Property>
+      <Property name="min_coc" type="number">
+        The minimum coc for the job calculation.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="GET" label="/v1/settings">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.get('/v1/settings')
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "min_kpi": "60",
+      "min_coc": "40",
+      "created_by": "637d83d15d2be122007524bf",
+      "created_at": "2022-01-01T00:00:00.000Z",
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
+---
+
+## Update setting {{ tag: 'PATCH', label: '/v1/settings' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to perform an update on a setting.
+
+    # Request
+    
+    ### Required attributes
+
+    <Properties>
+      <Property name="min_kpi" type="number">
+        The min kpi for the setting.
+      </Property>
+      <Property name="min_coc" type="number">
+        The min coc for the setting.
+      </Property>
+    </Properties>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Request" tag="PATCH" label="/v1/settings">
+    ```typescript {{ title: 'axios' }}
+    const response = axios.patch('/v1/settings', {
+      min_kpi: "60",
+      min_coc: "40",
+    })
+    ```
+    </CodeGroup>
+    <CodeGroup title="Response">
+    ```json {{ title: '200' }}
+    {
+      "matched_count": 1,
+      "modified_count": 1
+    }
+    ```
+    </CodeGroup>
+  </Col>
+</Row>
+
